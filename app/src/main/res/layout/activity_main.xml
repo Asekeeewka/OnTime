@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="@font/ms_extrabold"
-        android:text="OnTime✔"
+        android:text="OnTime✓"
         android:textColor="#fff"
-        android:textSize="50sp" />
+        android:textSize="40sp" />
 
 </RelativeLayout>
