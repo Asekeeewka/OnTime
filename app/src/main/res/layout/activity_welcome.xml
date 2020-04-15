@@ -4,11 +4,92 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeActivity">
+    tools:context=".WelcomeActivity"
+    android:background="@drawable/android17"
+    android:id="@+id/welcome_page_layout1">
+
+
+    <ImageView
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/welcome_page_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"/>
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="158dp"
-        android:layout_height="68dp"
-        android:text="Welcome asd"/>
+        android:layout_below="@+id/welcome_page_img"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/welcome_page_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добро Пожаловать!"
+        android:textColor="#6DC8E4"
+        android:fontFamily="@font/ms_extrabold"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/welcome_page_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Продолжить с помощью"
+        android:textSize="15sp"
+        android:layout_below="@id/welcome_page_tw"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="#000"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/welcome_page_google"
+        android:layout_width="100pt"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_page_continue"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Google"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:backgroundTint="@color/mainRed"
+        />
+
+    <TextView
+        android:id="@+id/welcome_page_register_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text="Регистрация"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/welcome_page_google"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="40dp"/>
+    <TextView
+        android:id="@+id/welcome_page_already_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text="Уже зарегистрированы? "
+        android:layout_marginLeft="75dp"
+        android:layout_below="@id/welcome_page_register_tw"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/welcome_page_login_tw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:text="Войти"
+        android:layout_toRightOf="@id/welcome_page_already_tw"
+        android:layout_below="@id/welcome_page_register_tw"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        />
+
+
+
 </RelativeLayout>
