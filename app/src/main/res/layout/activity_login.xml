@@ -13,14 +13,6 @@
         android:background="@drawable/android18"
         >
 
-        <ImageView
-            android:id="@+id/login_page_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_back_ios_24px"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"/>
-
         <TextView
             android:id="@+id/login_page_reg"
             android:layout_width="wrap_content"
@@ -103,6 +95,7 @@
             android:layout_marginTop="10dp"/>
 
         <Button
+            android:id="@+id/login_page_login_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:backgroundTint="@color/mainBlue"
