@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/restoran_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg5"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:tint="#6F000000"
+            />
+
+
+        <TextView
+            android:id="@+id/restoran_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restoran"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/restoran_bike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="125dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="3dp"
+            android:src="@drawable/ic_directions_bike_black_24dp" />
+        <TextView
+            android:id="@+id/restoran_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="400,00"
+            android:layout_toEndOf="@+id/restoran_bike"
+            android:textColor="#fff"
+            android:layout_marginTop="130dp"
+            android:textSize="12sp"
+            android:layout_marginEnd="3dp"/>
+
+        <TextView
+            android:id="@+id/restoran_KZT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KZT"
+            android:layout_toEndOf="@+id/restoran_price"
+            android:textColor="#fff"
+            android:layout_marginTop="130dp"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_alignParentRight="true"
+            android:id="@+id/restoran_KM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="km"
+            android:textColor="#fff"
+            android:layout_marginTop="131dp"
+            android:textSize="10sp"
+            android:layout_marginRight="20dp"/>
+
+        <TextView
+            android:id="@+id/restoran_distance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.5"
+            android:layout_toStartOf="@id/restoran_KM"
+            android:textColor="#fff"
+            android:layout_marginTop="131dp"
+            android:textSize="10sp"/>
+
+        <ImageView
+            android:id="@+id/restoran_distance_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="125dp"
+            android:src="@drawable/ic_location_on_black_24dp"
+            android:layout_toStartOf="@id/restoran_distance_value"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
