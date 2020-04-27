@@ -3,6 +3,8 @@ package com.example.ontime;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.RestoranViewHolder> {
+public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.RestoranViewHolder> implements Filterable {
     private ArrayList<RestoranItem> mRestoranList;
+    private List<RestoranItem> mRestoranListFull;
 
     public static class RestoranViewHolder extends RecyclerView.ViewHolder {
 
@@ -32,6 +36,7 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
 
     public RestoranAdapter(ArrayList<RestoranItem> restoranList) {
         mRestoranList = restoranList;
+        mRestoranListFull = new ArrayList<>(restoranList);
     }
 
     @NonNull
@@ -56,4 +61,39 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
     public int getItemCount() {
         return mRestoranList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return restoranFilter;
+    }
+
+    private Filter restoranFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<RestoranItem> filteredList = new ArrayList<>();
+
+            if (constraint == null || constraint.length() == 0){
+                filteredList.addAll(mRestoranListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+
+                for (RestoranItem item : mRestoranListFull) {
+                    if (item.getRestoranName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mRestoranList.clear();
+            mRestoranList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
