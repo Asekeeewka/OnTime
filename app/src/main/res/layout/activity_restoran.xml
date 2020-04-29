@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/searchview_container"
         android:background="@color/mainBlue"
+        android:padding="15dp"
         >
 
         <SearchView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
             android:background="@drawable/rounded_corner_et"
             android:layout_centerInParent="true"
             android:gravity="center"
@@ -35,4 +35,16 @@
         android:layout_below="@+id/searchview_container"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_add_shopping_cart_black_24dp"
+        app:backgroundTint="#fff"
+        android:contentDescription="Мои заказы"
+        android:layout_margin="16dp"
+        app:tint="@color/mainBlue"/>
 </RelativeLayout>

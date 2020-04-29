@@ -18,6 +18,16 @@ import java.util.List;
 public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.RestoranViewHolder> implements Filterable {
     private ArrayList<RestoranItem> mRestoranList;
     private List<RestoranItem> mRestoranListFull;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+        }
+
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public static class RestoranViewHolder extends RecyclerView.ViewHolder {
 
@@ -26,12 +36,24 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
         public TextView mTextView2;
         public TextView mTextView3;
 
-        public RestoranViewHolder(@NonNull View itemView) {
+        public RestoranViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.restoran_background);
             mTextView1 = itemView.findViewById(R.id.restoran_name);
             mTextView2 = itemView.findViewById(R.id.restoran_price);
             mTextView3 = itemView.findViewById(R.id.restoran_distance_value);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 
@@ -44,7 +66,7 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
     @Override
     public RestoranViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.restoran_item, parent, false);
-        RestoranViewHolder rvh = new RestoranViewHolder(v);
+        RestoranViewHolder rvh = new RestoranViewHolder(v, mListener);
         return rvh;
     }
 

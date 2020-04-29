@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +15,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 
 public class RestoranActivity extends AppCompatActivity {
@@ -22,13 +25,23 @@ public class RestoranActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private SearchView searchView;
     private View rootView;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restoran);
 
-        ArrayList<RestoranItem> restoranList = new ArrayList<>();
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RestoranActivity.this, MyOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        final ArrayList<RestoranItem> restoranList = new ArrayList<>();
         restoranList.add(new RestoranItem(R.drawable.bg5, "Aroma", "400,00", "1.5"));
         restoranList.add(new RestoranItem(R.drawable.bg5, "CoffeeBOOM", "400,00", "1.7"));
         restoranList.add(new RestoranItem(R.drawable.bg5, "Thali", "400,00", "2.5"));
@@ -42,6 +55,13 @@ public class RestoranActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
 
+        mAdapter.setOnItemClickListener(new RestoranAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent(RestoranActivity.this, MealOrderActivity.class);
+                startActivity(intent);
+            }
+        });
 
         searchView = (SearchView) findViewById(R.id.search_view);
         Log.d("asd","asdasdsadasdsadasdasdasdsa");
