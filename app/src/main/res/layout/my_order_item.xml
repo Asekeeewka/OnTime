@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/my_orders_item_img"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/bg5"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/my_orders_rest_name"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Aroma"
+            android:layout_toRightOf="@+id/my_orders_item_img"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/my_orders_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/my_orders_item_img"
+            android:layout_below="@+id/my_orders_rest_name"
+            android:text="1х"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/my_orders_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/my_orders_quantity"
+            android:layout_below="@+id/my_orders_rest_name"
+            android:text="Пицца Пепперони"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="10dp"/>
+
+
+        <TextView
+            android:id="@+id/my_orders_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Обрабатывается"
+            android:textSize="10sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            />
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_location_on_black_24dp"
+            android:tint="@color/mainBlue"
+            android:layout_toStartOf="@+id/my_orders_status"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
