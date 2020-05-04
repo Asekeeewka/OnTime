@@ -14,3 +14,7 @@ The food delivery service app developed for CSS302 Software Engineering course
 [@rabia19](https://github.com/rabia19) - Designer 
 
 Ali Abuov - The Positive Guy =)
+
+## Side Help
+
+[@YerbolNursat](https://github.com/YerbolNursat) - Guy who has helped with his experience in Android Development
