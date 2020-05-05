@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,7 @@ public class MealOrderActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView1;
     private MealOrderAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private View rootView;
-    private ImageView test;
-    private TextView asd;
+    private TextView zakazat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,6 @@ public class MealOrderActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView1.setAdapter(mAdapter);
-        asd=findViewById(R.id.meal_quantity);
 
         mAdapter.setOnItemClickListener(new MealOrderAdapter.OnItemClickListener() {
             @Override
@@ -54,8 +52,14 @@ public class MealOrderActivity extends AppCompatActivity {
 
             }
         });
-        test = (ImageView) findViewById(R.id.ic_minus);
-        //test.setVisibility(View.GONE);
+        zakazat = findViewById(R.id.zakazat);
+        zakazat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MealOrderActivity.this, PaymentActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
     @Override
