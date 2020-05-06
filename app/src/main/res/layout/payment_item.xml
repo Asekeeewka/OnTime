@@ -11,23 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/img"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="32dp"
 
-            android:background="@color/Transparent"
-            android:scaleType="fitXY"
-            android:src="@drawable/bg3"
-            app:riv_oval="true" />
 
         <TextView
             android:id="@+id/meal_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="12sp"
+            android:layout_marginStart="32dp"
             android:text="1x"
             android:textColor="@color/black"
             android:textFontWeight="600"
@@ -40,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
-            android:layout_toEndOf="@id/img"
+            android:layout_toEndOf="@id/meal_quantity"
             android:text="Пицца Пепперони"
             android:textColor="@color/black"
             android:textSize="13.5sp" />

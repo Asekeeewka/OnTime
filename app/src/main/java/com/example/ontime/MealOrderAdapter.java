@@ -3,11 +3,8 @@ package com.example.ontime;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,50 +13,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MealOrderAdapter extends RecyclerView.Adapter<MealOrderAdapter.MealOrderViewHolder> {
-    private ArrayList<RestoranItem> mRestoranList;
-    private List<RestoranItem> mRestoranListFull;
+    private ArrayList<MealItem> mMealList;
+    private List<MealItem> mMealListFull;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
-        void onItemClick(int position);
+        //void onItemClick(int position);
+        void onMinusClick(int position);
     }
 
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
     public static class MealOrderViewHolder extends RecyclerView.ViewHolder {
-
-//        public ImageView mImageView;
-//        public TextView mTextView1;
-//        public TextView mTextView2;
-//        public TextView mTextView3;
+        public ImageView mealImage;
+        public TextView mealName;
+        public TextView mealPrice;
+        public TextView foodQuantity;
+        public ImageView minusButton;
+        public ImageView plusButton;
 
         public MealOrderViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-//            mImageView = itemView.findViewById(R.id.restoran_background);
-//            mTextView1 = itemView.findViewById(R.id.restoran_name);
-//            mTextView2 = itemView.findViewById(R.id.restoran_price);
-//            mTextView3 = itemView.findViewById(R.id.restoran_distance_value);
-//
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if (listener != null){
-//                        int position = getAdapterPosition();
-//                        if(position != RecyclerView.NO_POSITION){
-//                            listener.onItemClick(position);
-//                        }
-//                    }
-//                }
-//            });
+            minusButton = itemView.findViewById(R.id.ic_minus);
+            plusButton = itemView.findViewById(R.id.ic_plus);
+            foodQuantity = itemView.findViewById(R.id.meal_quantity);
+
+            minusButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onMinusClick(position);
+                        }
+                    }
+                }
+            });
+
+            mealImage = itemView.findViewById(R.id.img);
+            mealName = itemView.findViewById(R.id.meal_name);
+            mealPrice = itemView.findViewById(R.id.meal_price);
+
         }
     }
 
-    public MealOrderAdapter(ArrayList<RestoranItem> restoranList) {
-        mRestoranList = restoranList;
-        mRestoranListFull = new ArrayList<>(restoranList);
+    public MealOrderAdapter(ArrayList<MealItem> MealList) {
+        mMealList = MealList;
+        mMealListFull = new ArrayList<>(MealList);
     }
 
     @NonNull
@@ -72,16 +75,14 @@ public class MealOrderAdapter extends RecyclerView.Adapter<MealOrderAdapter.Meal
 
     @Override
     public void onBindViewHolder(@NonNull MealOrderViewHolder holder, int position) {
-//        RestoranItem currentItem = mRestoranList.get(position);
-//
-//        holder.mImageView.setImageResource(currentItem.getBackgroundImage());
-//        holder.mTextView1.setText(currentItem.getRestoranName());
-//        holder.mTextView2.setText(currentItem.getPrice());
-//        holder.mTextView3.setText(currentItem.getDistance());
+          MealItem currentItem = mMealList.get(position);
+          holder.mealImage.setImageResource(currentItem.getBackgroundImage());
+          holder.mealName.setText(currentItem.getMealName());
+          holder.mealPrice.setText(currentItem.getPrice());
     }
 
     @Override
     public int getItemCount() {
-        return mRestoranList.size();
+        return mMealList.size();
     }
 }

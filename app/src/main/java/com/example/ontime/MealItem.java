@@ -1,47 +1,42 @@
 package com.example.ontime;
 
-public class RestoranItem {
+public class MealItem {
     private int backgroundImage;
-    private String restoranName;
+    private String mealName;
     private String price;
-    private String distance;
+    private String quantity;
 
-    public RestoranItem(int bgImage, String rName, String prc, String dist) {
+
+    public MealItem(int bgImage, String mName, String prc) {
         backgroundImage = bgImage;
-        restoranName = rName;
+        mealName = mName;
         price = prc;
-        distance = dist;
     }
 
     public int getBackgroundImage() {
         return backgroundImage;
     }
 
-    public String getRestoranName() {
-        return restoranName;
+    public String getMealName() {
+        return mealName;
     }
 
     public String getPrice() {
         return price;
     }
 
-    public String getDistance() {
-        return distance;
-    }
 
     public void setBackgroundImage(int backgroundImage) {
         this.backgroundImage = backgroundImage;
     }
 
     public void setRestoranName(String restoranName) {
-        this.restoranName = restoranName;
+        this.mealName = restoranName;
     }
 
     public void setPrice(String price) {
         this.price = price;
     }
 
-    public void setDistance(String distance) {
-        this.distance = distance;
-    }
+    public void setQuantity(String quantity) {this.quantity=quantity;}
 }

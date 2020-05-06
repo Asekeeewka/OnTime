@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_corner_et">
+
+    <TextView
+        android:id="@+id/vi_uvereni"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="ВЫ УВЕРЕНЫ ЧТО ХОТИТЕ ВЫЙТИ?"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Если вы выйдете сейчас, вы потеряете все выбранные вами продукты. Вы уверены?"
+        android:layout_centerInParent="true"
+        android:id="@+id/main_text"
+        android:inputType="textMultiLine"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttons_layout"
+        android:orientation="vertical"
+        android:layout_below="@+id/main_text"
+        android:layout_centerHorizontal="true">
+    <Button
+        android:id="@+id/da_zakrit"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/mainBlue"
+        android:background="@drawable/rounded_corner_true"
+        android:text="Да,закрыть"
+        android:layout_centerHorizontal="true"
+        android:textSize="10sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/net_ostatsya"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#f9f9f9"
+        android:background="@drawable/rounded_corner_true"
+        android:text="Нет,остаться"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/mainBlue"
+        android:textSize="10sp"/>
+    </LinearLayout>
+</RelativeLayout>
