@@ -3,14 +3,15 @@ package com.example.ontime;
 public class MealItem {
     private int backgroundImage;
     private String mealName;
-    private String price;
-    private String quantity;
+    private Integer price;
+    private Integer quantity;
 
 
-    public MealItem(int bgImage, String mName, String prc) {
+    public MealItem(int bgImage, String mName, Integer prc) {
         backgroundImage = bgImage;
         mealName = mName;
         price = prc;
+        quantity=0;
     }
 
     public int getBackgroundImage() {
@@ -21,7 +22,7 @@ public class MealItem {
         return mealName;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
@@ -34,10 +35,18 @@ public class MealItem {
         this.mealName = restoranName;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public void setQuantity(String quantity) {this.quantity=quantity;}
+    public void setQuantity(Integer quantity) {this.quantity=quantity;}
+
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
 }
 /*comment*/

@@ -18,8 +18,8 @@ public class MealOrderAdapter extends RecyclerView.Adapter<MealOrderAdapter.Meal
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
-        //void onItemClick(int position);
-        void onMinusClick(int position);
+        void onPlusClick(MealItem mealItem);
+        void onMinusClick(MealItem mealItem);
     }
 
 
@@ -40,19 +40,6 @@ public class MealOrderAdapter extends RecyclerView.Adapter<MealOrderAdapter.Meal
             minusButton = itemView.findViewById(R.id.ic_minus);
             plusButton = itemView.findViewById(R.id.ic_plus);
             foodQuantity = itemView.findViewById(R.id.meal_quantity);
-
-            minusButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            listener.onMinusClick(position);
-                        }
-                    }
-                }
-            });
-
             mealImage = itemView.findViewById(R.id.img);
             mealName = itemView.findViewById(R.id.meal_name);
             mealPrice = itemView.findViewById(R.id.meal_price);
@@ -75,10 +62,34 @@ public class MealOrderAdapter extends RecyclerView.Adapter<MealOrderAdapter.Meal
 
     @Override
     public void onBindViewHolder(@NonNull MealOrderViewHolder holder, int position) {
-          MealItem currentItem = mMealList.get(position);
-          holder.mealImage.setImageResource(currentItem.getBackgroundImage());
-          holder.mealName.setText(currentItem.getMealName());
-          holder.mealPrice.setText(currentItem.getPrice());
+        final MealItem currentItem = mMealList.get(position);
+        holder.mealImage.setImageResource(currentItem.getBackgroundImage());
+        holder.mealName.setText(currentItem.getMealName());
+        holder.mealPrice.setText(currentItem.getPrice().toString());
+        if (currentItem.getQuantity() == 0) {
+            holder.minusButton.setVisibility(View.INVISIBLE);
+            holder.foodQuantity.setVisibility(View.INVISIBLE);
+        } else {
+            holder.minusButton.setVisibility(View.VISIBLE);
+            holder.foodQuantity.setVisibility(View.VISIBLE);
+            holder.foodQuantity.setText(currentItem.getQuantity().toString() + "x");
+        }
+        holder.plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentItem.setQuantity(currentItem.getQuantity() + 1);
+                notifyDataSetChanged();
+                mListener.onPlusClick(currentItem);
+            }
+        });
+        holder.minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                currentItem.setQuantity(currentItem.getQuantity() - 1);
+                notifyDataSetChanged();
+                mListener.onMinusClick(currentItem);
+            }
+        });
     }
 
     @Override

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,14 +23,15 @@ public class MealOrderActivity extends AppCompatActivity {
     private MealOrderAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView zakazat;
+    private ArrayList<MealItem> toPay = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meal_order);
         final ArrayList<MealItem> mealList = new ArrayList<>();
-        mealList.add(new MealItem(R.drawable.bg5, "Пицца Пепперони", "400,00"));
-        mealList.add(new MealItem(R.drawable.bg5, "Бургер Халапеньо", "1300,00"));
+        mealList.add(new MealItem(R.drawable.bg5, "Пицца Пепперони", 400));
+        mealList.add(new MealItem(R.drawable.bg5, "Бургер Халапеньо", 1300));
 
 
         mRecyclerView = findViewById(R.id.fast_food_rv);
@@ -46,13 +48,19 @@ public class MealOrderActivity extends AppCompatActivity {
 
         mAdapter.setOnItemClickListener(new MealOrderAdapter.OnItemClickListener() {
             @Override
-            public void onMinusClick(int position) {
-                Toast.makeText(MealOrderActivity.this,"ASDDASDASDAS",Toast.LENGTH_LONG).show();
+            public void onPlusClick(MealItem mealItem) {
+                toPay.add(mealItem);
+                setButton();
+            }
 
-
+            @Override
+            public void onMinusClick(MealItem mealItem) {
+                toPay.remove(mealItem);
+                setButton();
             }
         });
         zakazat = findViewById(R.id.zakazat);
+        zakazat.setVisibility(View.GONE);
         zakazat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +70,21 @@ public class MealOrderActivity extends AppCompatActivity {
         });
 
     }
+
+    @SuppressLint("SetTextI18n")
+    public void setButton() {
+        if (toPay.size() == 0) {
+            zakazat.setVisibility(View.GONE);
+        } else {
+            Integer price = 0;
+            for (int i = 0; i < toPay.size(); i++) {
+                price += toPay.get(i).getPrice();
+            }
+            zakazat.setText("Заказ " + toPay.size() + " за KZT " + price.toString());
+            zakazat.setVisibility(View.VISIBLE);
+        }
+    }
+
     @Override
     public void onBackPressed() {
         ViewDialog alert = new ViewDialog();

@@ -1,245 +1,251 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MyOrdersActivity">
-
-    <TextView
-        android:id="@+id/oplata_zakazi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Оплата заказа"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        android:layout_marginBottom="20dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_orders_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#F7f7f7"
-        android:scrollbars="vertical"
-        android:layout_below="@+id/oplata_zakazi"
-        />
-
-    <TextView
-        android:id="@+id/delivery_info"
-        android:layout_marginStart="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Информация о доставке"
-        android:layout_below="@id/my_orders_recycler"/>
-    <View
-        android:id="@+id/grey_line_1"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="12dp"
-        android:layout_below="@id/delivery_info"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/grey_line" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/payment_ed1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/grey_line_1"
-        android:gravity="center_horizontal"
-        app:hintEnabled="false"
-        app:boxStrokeColor="@color/mainBlue">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/payment_ed_adres"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Адрес Доставки"
-            android:inputType="text"
-            android:backgroundTint="#fff"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/payment_ed2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/payment_ed1"
-        android:gravity="center_horizontal"
-        app:hintEnabled="false"
-        app:boxStrokeColor="@color/mainBlue">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/payment_ed_telefon"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Телефон"
-            android:inputType="text"
-            android:backgroundTint="#fff"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/payment_ed3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/payment_ed2"
-        android:gravity="center_horizontal"
-        app:hintEnabled="false"
-        app:boxStrokeColor="@color/mainBlue">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/payment_ed_comment"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Комментарии"
-            android:inputType="text"
-            android:backgroundTint="#fff"
-            />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:layout_marginTop="20dp"
-        android:id="@+id/payment_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Оплата"
-        android:layout_marginStart="20dp"
-        android:layout_below="@id/payment_ed3"/>
-    <View
-        android:id="@+id/grey_line_2"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/payment_info"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/grey_line" />
+    android:fillViewport="true"
+    android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/grey_line_2">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="12dp"
+        tools:context=".MyOrdersActivity">
 
         <TextView
-            android:id="@+id/produkti"
+            android:id="@+id/oplata_zakazi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Продукты"
-            android:textColor="@color/black"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:id="@+id/produkti_tenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="₸"
-            android:textColor="@color/black"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:id="@+id/produkti_summa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="400,00"
-            android:textColor="@color/black"
-            android:layout_toLeftOf="@id/produkti_tenge"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="2dp"/>
-
-
-        <TextView
-            android:id="@+id/dostavka"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Доставка"
-            android:textColor="@color/black"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/produkti"/>
-
-
-        <TextView
-            android:id="@+id/dostavka_tenge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="₸"
-            android:textColor="@color/black"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@id/produkti_tenge"/>
-
-        <TextView
-            android:id="@+id/dostavka_summa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1300,00"
-            android:textColor="@color/black"
-            android:layout_toLeftOf="@id/dostavka_tenge"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="2dp"
-            android:layout_below="@id/produkti_summa"/>
-
-        <TextView
-            android:id="@+id/obshaya"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Общая сумма"
-            android:textColor="@color/black"
-            android:layout_marginStart="32dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_below="@+id/dostavka"/>
+            android:layout_marginBottom="20dp"
+            android:text="Оплата заказа"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/oplata_zakazi"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/my_orders_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F7f7f7"
+                android:scrollbars="vertical" />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/obshaya_tenge"
-            android:layout_width="wrap_content"
+            android:id="@+id/delivery_info"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="₸"
+            android:layout_below="@id/linearLayout"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:text="Информация о доставке"
             android:textColor="@color/black"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/dostavka_tenge"/>
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/payment_ed1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/delivery_info"
+            android:gravity="center_horizontal"
+            app:boxStrokeColor="@color/mainBlue"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/payment_ed_adres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="#fff"
+                android:hint="Адрес Доставки"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/payment_ed2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/payment_ed1"
+            android:gravity="center_horizontal"
+            app:boxStrokeColor="@color/mainBlue"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/payment_ed_telefon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="#fff"
+                android:hint="Телефон"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/payment_ed3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/payment_ed2"
+            android:gravity="center_horizontal"
+            app:boxStrokeColor="@color/mainBlue"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/payment_ed_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="#fff"
+                android:hint="Комментарии"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/obshaya_summa"
+            android:id="@+id/payment_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1700,00"
-            android:textColor="@color/black"
-            android:layout_toLeftOf="@id/obshaya_tenge"
+            android:layout_below="@id/payment_ed3"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="2dp"
-            android:layout_below="@id/dostavka_summa"/>
+            android:text="Оплата" />
+
+        <View
+            android:id="@+id/grey_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="1.5dp"
+            android:layout_below="@id/payment_info"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/grey_line" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:layout_below="@id/grey_line_2">
+
+            <TextView
+                android:id="@+id/produkti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:text="Продукты"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/produkti_tenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="32dp"
+                android:text="₸"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/produkti_summa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_toLeftOf="@id/produkti_tenge"
+                android:text="400,00"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/dostavka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/produkti"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
+                android:text="Доставка"
+                android:textColor="@color/black" />
+
+
+            <TextView
+                android:id="@+id/dostavka_tenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/produkti_tenge"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="32dp"
+                android:text="₸"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/dostavka_summa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/produkti_summa"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="2dp"
+                android:layout_toLeftOf="@id/dostavka_tenge"
+                android:text="1300,00"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/obshaya"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dostavka"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
+                android:text="Общая сумма"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/obshaya_tenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dostavka_tenge"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="32dp"
+                android:text="₸"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/obshaya_summa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dostavka_summa"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="2dp"
+                android:layout_toLeftOf="@id/obshaya_tenge"
+                android:text="1700,00"
+                android:textColor="@color/black" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/podtverdit_zakaz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rounded_corner_light_blue"
+            android:paddingStart="32dp"
+            android:paddingTop="12sp"
+            android:paddingEnd="32dp"
+            android:paddingBottom="12dp"
+            android:text="Подтвердить заказ"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            android:visibility="visible" />
 
     </RelativeLayout>
-
-
-    <TextView
-        android:id="@+id/podtverdit_zakaz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/rounded_corner_light_blue"
-        android:paddingStart="32dp"
-        android:paddingTop="12sp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="12dp"
-        android:text="Подтвердить заказ"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        android:visibility="invisible"/>
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
