@@ -193,5 +193,5 @@
         android:text="Заказ 1 за KZT 1300"
         android:textColor="@color/white"
         android:textSize="10sp"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
