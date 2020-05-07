@@ -21,6 +21,8 @@ public class MealOrderActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView mRecyclerView1;
     private MealOrderAdapter mAdapter;
+    private MealOrderAdapter mAdapter1;
+
     private RecyclerView.LayoutManager mLayoutManager;
     private TextView zakazat;
     private ArrayList<MealItem> toPay = new ArrayList<>();
@@ -40,13 +42,27 @@ public class MealOrderActivity extends AppCompatActivity {
         mRecyclerView1.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mAdapter = new MealOrderAdapter(mealList);
+        mAdapter1 = new MealOrderAdapter(mealList);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView1.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView1.setAdapter(mAdapter);
+        mRecyclerView1.setAdapter(mAdapter1);
 
         mAdapter.setOnItemClickListener(new MealOrderAdapter.OnItemClickListener() {
+            @Override
+            public void onPlusClick(MealItem mealItem) {
+                toPay.add(mealItem);
+                setButton();
+            }
+
+            @Override
+            public void onMinusClick(MealItem mealItem) {
+                toPay.remove(mealItem);
+                setButton();
+            }
+        });
+        mAdapter1.setOnItemClickListener(new MealOrderAdapter.OnItemClickListener() {
             @Override
             public void onPlusClick(MealItem mealItem) {
                 toPay.add(mealItem);
