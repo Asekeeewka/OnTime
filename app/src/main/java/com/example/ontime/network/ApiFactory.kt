@@ -17,7 +17,7 @@ class ApiFactory private constructor() {
         retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .baseUrl(SyncStateContract.Constants.BASE_URL_GARAGE)
+                .baseUrl(Constants.BASE_URL)
                 .build()
     }
 

@@ -12,20 +12,22 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ontime.data.Restaurant;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.RestoranViewHolder> implements Filterable {
-    private ArrayList<RestoranItem> mRestoranList;
-    private List<RestoranItem> mRestoranListFull;
+    private ArrayList<Restaurant.Data> mRestoranList;
+    private List<Restaurant.Data> mRestoranListFull;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
-        }
+    }
 
 
-    public void setOnItemClickListener(OnItemClickListener listener){
+    public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
 
@@ -46,9 +48,9 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (listener != null){
+                    if (listener != null) {
                         int position = getAdapterPosition();
-                        if(position != RecyclerView.NO_POSITION){
+                        if (position != RecyclerView.NO_POSITION) {
                             listener.onItemClick(position);
                         }
                     }
@@ -57,7 +59,7 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
         }
     }
 
-    public RestoranAdapter(ArrayList<RestoranItem> restoranList) {
+    public RestoranAdapter(ArrayList<Restaurant.Data> restoranList) {
         mRestoranList = restoranList;
         mRestoranListFull = new ArrayList<>(restoranList);
     }
@@ -72,12 +74,12 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
 
     @Override
     public void onBindViewHolder(@NonNull RestoranViewHolder holder, int position) {
-        RestoranItem currentItem = mRestoranList.get(position);
+        Restaurant.Data currentItem = mRestoranList.get(position);
 
-        holder.mImageView.setImageResource(currentItem.getBackgroundImage());
-        holder.mTextView1.setText(currentItem.getRestoranName());
-        holder.mTextView2.setText(currentItem.getPrice());
-        holder.mTextView3.setText(currentItem.getDistance());
+        holder.mImageView.setImageResource(R.drawable.bg5);
+        holder.mTextView1.setText(currentItem.getName());
+        holder.mTextView2.setText("400");
+        holder.mTextView3.setText("4.5");
     }
 
     @Override
@@ -93,15 +95,15 @@ public class RestoranAdapter extends RecyclerView.Adapter<RestoranAdapter.Restor
     private Filter restoranFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<RestoranItem> filteredList = new ArrayList<>();
+            List<Restaurant.Data> filteredList = new ArrayList<>();
 
-            if (constraint == null || constraint.length() == 0){
+            if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(mRestoranListFull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (RestoranItem item : mRestoranListFull) {
-                    if (item.getRestoranName().toLowerCase().contains(filterPattern)){
+                for (Restaurant.Data item : mRestoranListFull) {
+                    if (item.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
                 }
