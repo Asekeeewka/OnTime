@@ -26,11 +26,11 @@ class RestoranActivity : AppCompatActivity() {
     private var searchView: SearchView? = null
     lateinit var compositeDisposable: CompositeDisposable
 
-    private var fab: FloatingActionButton? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restoran)
-        fab?.setOnClickListener {
+        fab.setOnClickListener {
+            println("Hello world")
             val intent = Intent(this@RestoranActivity, MyOrdersActivity::class.java)
             startActivity(intent)
         }
@@ -76,14 +76,20 @@ class RestoranActivity : AppCompatActivity() {
 
     fun setAdapter(data: List<Restaurant.Data>) {
         restoran_recycler?.setHasFixedSize(true)
-        mAdapter = RestoranAdapter(data as ArrayList<Restaurant.Data>?)
+        mAdapter = RestoranAdapter(data as ArrayList<Restaurant.Data>)
         restoran_recycler?.layoutManager = LinearLayoutManager(this)
         restoran_recycler?.adapter = mAdapter
-        mAdapter!!.setOnItemClickListener {
-            val intent = Intent(this@RestoranActivity, MealOrderActivity::class.java)
-            intent.putExtra("id", data[it].id.toString())
-            startActivity(intent)
-        }
-    }
 
+        restoran_recycler.addOnItemTouchListener(
+                RecyclerItemClickListener(restoran_recycler,
+                        object : RecyclerItemClickListener.OnItemClickListener {
+                            override fun onItemClick(view: View, position: Int) {
+                                val intent = Intent(this@RestoranActivity, MealOrderActivity::class.java)
+                                intent.putExtra("id", data[position].id.toString())
+                                startActivity(intent)
+                            }
+                        })
+        )
+    }
 }
+
